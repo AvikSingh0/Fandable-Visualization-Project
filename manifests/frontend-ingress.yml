@@ -1,0 +1,20 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: fandable-staging-frontend-ingress
+  namespace: fandable-staging
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: fandable-staging.socs.uoguelph.ca # TODO: replace this with your application name with a frontend suffix
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: fandable-staging-frontend-service
+                port:
+                  number: 80
+

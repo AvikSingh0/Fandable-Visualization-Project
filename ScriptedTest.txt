@@ -1,0 +1,64 @@
+//To test the database:
+
+Visit https://localhost:3000 or http://fandable-staging.socs.uoguelph.ca/ if live
+Expected: You should be met with a simple non-empty webpage with a navbar, several buttons and a graph.
+
+To Begin, Press F12 to open the Google Devtools and navigate to the "Console" Tab
+Expected: Google DevTools opens on the right side of the browser on the 'elements' tab.
+
+Back on the webpage click the button labelled "Display DB Data and Update Graph"
+Expected: Something is printed to the console, webpage doesn't go black.
+
+In the DevTools console, the contents of the database will be displayed in Array format, click on the small arrow to the left to expand.
+Expected: An array of some size will be printed to console.
+
+Click the button named "Drop DB"
+Expected: In the DevTools console "Posts successfully deleted" should be displayed.
+
+===END OF TEST===
+
+To test Pulling Data From YouTube and Reddit:
+
+Visit https://localhost:3000 or http://fandable-staging.socs.uoguelph.ca/ if live
+Expected: You should be met with a simple non-empty webpage with a navbar, several buttons and a graph.
+
+To Begin, Press F12 to open the Google Devtools and navigate to the "Console" Tab
+Expected: Google DevTools opens on the right side of the browser on the 'elements' tab.
+
+Click the button named "Drop DB"
+Expected: In the DevTools console "Posts successfully deleted" should be displayed.
+
+Click the button labelled "Pull Data From YouTube and Reddit"
+Expected: In the DevTools console "Posts successfully added" count: #, should be displayed.
+
+Click the button labelled "Display DB Data and Update Graph" again.
+Expected: Verify that the source field for all posts is either "youtube" or "reddit".
+
+Scroll to view the Stacked Bar Graph
+Expected: The webpage is not blank, the graph may or may not be empty.
+
+Click the button named "Drop DB"
+Expected: In the DevTools console "Posts successfully deleted" should be displayed.
+
+===END OF TEST===
+
+Test Table Content
+
+
+Visit https://localhost:3000 or http://fandable-staging.socs.uoguelph.ca/ if live
+Expected: You should be met with a simple non-empty webpage with a navbar, several buttons and a graph.
+
+To Begin, Press F12 to open the Google Devtools and navigate to the "Console" Tab
+Expected: Google DevTools opens on the right side of the browser on the 'elements' tab.
+
+Click the button named "Drop DB"
+Expected: In the DevTools console "Posts successfully deleted" should be displayed.
+
+Click the button labelled "Pull Data From YouTube and Reddit"
+Expected: In the DevTools console "Posts successfully added" count: #, should be displayed.
+
+Click the button labelled "Display DB Data and Update Graph" again.
+Expected: Verify that the source field for all posts is either "youtube" or "reddit".
+
+At the top of the screen, click 'Detailed Data' and verify the contents of the screen
+Expected: A Table appears containing text information about the posts including the source of the information.

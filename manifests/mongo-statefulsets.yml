@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: fandable-staging-mongo-statefulset
+  namespace: fandable-staging
+spec:
+  replicas: 1
+  serviceName: fandable-staging-mongo-service
+  selector:
+    matchLabels:
+      app: fandable-mongo
+  template:
+    metadata:
+      labels:
+        app: fandable-mongo
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: fandable-mongo
+
+          # image: fandable-mongo
+          # imagePullPolicy: Never # Comment out the imagePullPolicy field if you are NOT running locally. Otherwise, set it to Never.
+
+          image: registry.socs.uoguelph.ca/3760w23/t2/fandable/fandable/mongo:staging
+          imagePullPolicy: Always
+
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: fandable-mongo-secrets
+                  key: mongo-initdb-root-username
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: fandable-mongo-secrets
+                  key: mongo-initdb-root-password
+            - name: MONGO_INITDB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: fandable-staging-configmap
+                  key: mongo-initdb-database
+          ports:
+            - containerPort: 27017
+          volumeMounts:
+            - name: mongo-persistent-storage
+              mountPath: /data/db
+      imagePullSecrets:
+        - name: regcred # TODO: replace this with your image pull secret name
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi

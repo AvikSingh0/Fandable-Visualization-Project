@@ -1,0 +1,3 @@
+API Key: x
+API Secret: x
+Bearer Token: x
